@@ -40,7 +40,10 @@ changelog:
 snapshot:
   name_template: "{{ .Tag }}-next"
 nfpms:
-  - formats:
+  - package_name: "notify-me"
+    maintainer: rwxd <git@rwxd.de>
+    description: "Small command line tool to notify myself through various services."
+    formats:
       - deb
       - rpm
 # upx:
