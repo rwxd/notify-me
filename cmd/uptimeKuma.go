@@ -111,7 +111,9 @@ var uptimeKumaWrapCmd = &cobra.Command{
 		slog.Debug("Running command", "program", program, "args", programArgs)
 		err := command.Run()
 
-		if message == "" {
+		if message != "" {
+			message += "\n" + output.String()
+		} else {
 			message = output.String()
 		}
 

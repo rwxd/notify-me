@@ -125,15 +125,17 @@ var ntfyWrapCmd = &cobra.Command{
 		programArgs := args[1:]
 		command := exec.Command(program, programArgs...)
 
-		var out bytes.Buffer
-		command.Stdout = &out
-		command.Stderr = &out
+		var output bytes.Buffer
+		command.Stdout = &output
+		command.Stderr = &output
 
 		slog.Debug("Running command", "program", program, "args", programArgs)
 		err := command.Run()
 
-		if notification.Message == "" {
-			notification.Message = out.String()
+		if notification.Message != "" {
+			notification.Message += "\n" + output.String()
+		} else {
+			notification.Message = output.String()
 		}
 
 		if err != nil {

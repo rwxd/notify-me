@@ -35,6 +35,9 @@ Runs a command and sends the up notification if the command exits with 0, otherw
 # wrap ping command
 notify-me uptime-kuma wrap -i uptime.com -t "<token>" -- ping -c 1 google.com
 
+# send with a custom message before the command output
+notify-me uptime-kuma wrap -i uptime.com -t "<token>" -m "<message>" -- ping -c 1 google.com
+
 # only send down notification
 notify-me uptime-kuma wrap -i uptime.com -t "<token>" --fail -- ping -c 1 google.com
 
@@ -84,7 +87,7 @@ Supports all the options from the ntfy command.
 # wrap ping command
 notify-me ntfy wrap -t "<topic>" -- ping -c 1 google.com
 
-# send with a custom message instead of the command output
+# send with a custom message before the command output
 notify-me ntfy wrap -t "<topic>" -m "<message>" -- ping -c 1 google.com
 
 # send notification to self hosted instance with username and password
