@@ -36,10 +36,10 @@ Runs a command and sends the up notification if the command exits with 0, otherw
 notify-me uptime-kuma wrap -i uptime.com -t "<token>" -- ping -c 1 google.com
 
 # only send down notification
-notify-me uptime-kuma wrap -i uptime.com -t "<token>" --error  -- ping -c 1 google.com
+notify-me uptime-kuma wrap -i uptime.com -t "<token>" --error -- ping -c 1 google.com
 
 # only send success notification
-notify-me uptime-kuma wrap -i uptime.com -t "<token>" --success  -- ping -c 1 google.com
+notify-me uptime-kuma wrap -i uptime.com -t "<token>" --success -- ping -c 1 google.com
 
 # send down notification when ping succeeds
 notify-me uptime-kuma wrap -i uptime.com -t "<token>" --reverse -- ping -c 1 google.com
