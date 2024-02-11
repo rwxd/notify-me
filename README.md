@@ -4,6 +4,10 @@ Small command line tool to notify myself through various services.
 
 ## Installation
 
+Go to [Releases](https://github.com/rwxd/notify-me/releases) and download the latest release.
+
+Or install it from source:
+
 ```bash
 go install github.com/rxwxd/notify-me
 ```
