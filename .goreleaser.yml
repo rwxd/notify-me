@@ -1,5 +1,5 @@
 ---
-project_name: pdnsgrep
+project_name: notify-me
 
 before:
   hooks:
@@ -11,6 +11,9 @@ builds:
     mod_timestamp: "{{ .CommitTimestamp }}"
     flags:
       - -trimpath
+    # ldflags:
+    #   - -s
+    #   - -w
     goarch:
       - amd64
       - arm64
@@ -42,17 +45,12 @@ nfpms:
       - rpm
 # upx:
 #   - enabled: true
-#
-#     # Compress argument.
 #     # Valid options are from '1' (faster) to '9' (better), and 'best'.
 #     compress: best
-#
 #     # Whether to try LZMA (slower).
 #     lzma: true
-#
 #     # Whether to try all methods and filters (slow).
 #     brute: false
-#
 #     goos:
 #       - linux
 #       - windows
