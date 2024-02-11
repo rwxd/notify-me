@@ -9,7 +9,7 @@ Go to [Releases](https://github.com/rwxd/notify-me/releases) and download the la
 Or install it from source:
 
 ```bash
-go install github.com/rxwxd/notify-me
+go install github.com/rxwxd/notify-me@latest
 ```
 
 ## Usage
