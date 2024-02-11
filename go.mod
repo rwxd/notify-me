@@ -1,6 +1,6 @@
 module github.com/rwxd/notify-me
 
-go 1.22rc2
+go 1.22
 
 require (
 	github.com/sagikazarmark/slog-shim v0.1.0
