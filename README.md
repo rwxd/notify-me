@@ -62,10 +62,10 @@ notify-me ntfy -t "<topic>" -m "<message>"
 notify-me ntfy -i "<instance>" -u "<user>" -p "<pass>" -t "<topic>" -m "<message>"
 
 # send notification with token for authentication
-notify-me ntfy -i "<instance>" -T "<token>" -t "<topic>" -m "<message>"
+notify-me ntfy -i "<instance>" --token "<token>" -t "<topic>" -m "<message>"
 
 # add title
-notify-me ntfy -t "<topic>" -m "<message>" --title "title"
+notify-me ntfy -t "<topic>" -m "<message>" -T "title"
 
 # set priority to high
 notify-me ntfy -t "<topic>" -m "<message>" -p "high"
