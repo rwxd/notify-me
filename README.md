@@ -56,25 +56,25 @@ notify-me uptime-kuma wrap -i uptime.com -t "<token>" -m "<message>" -- ping -c 
 
 ```bash
 # send notification
-notify-me ntfy -t "<topic>" -m "<message>"
+notify-me ntfy -T "<topic>" -m "<message>"
 
 # send notification to self hosted instance with username and password
-notify-me ntfy -i "<instance>" -u "<user>" -p "<pass>" -t "<topic>" -m "<message>"
+notify-me ntfy -i "<instance>" -u "<user>" -p "<pass>" -T "<topic>" -m "<message>"
 
 # send notification with token for authentication
-notify-me ntfy -i "<instance>" --token "<token>" -t "<topic>" -m "<message>"
+notify-me ntfy -i "<instance>" -t "<token>" -T "<topic>" -m "<message>"
 
 # add title
-notify-me ntfy -t "<topic>" -m "<message>" -T "title"
+notify-me ntfy -T "<topic>" -m "<message>" --title "title"
 
 # set priority to high
-notify-me ntfy -t "<topic>" -m "<message>" -p "high"
+notify-me ntfy -T "<topic>" -m "<message>" -p "high"
 
 # add tags
-notify-me ntfy -t "<topic>" -m "<message>" --tags "tag1,tag2"
+notify-me ntfy -T "<topic>" -m "<message>" --Tags "tag1,tag2"
 
 # add url to open when clicking on notification
-notify-me ntfy -t "<topic>" -m "<message>" --url "https://example.com"
+notify-me ntfy -T "<topic>" -m "<message>" --url "https://example.com"
 
 # more options
 notify-me ntfy --help
@@ -88,19 +88,19 @@ Supports all the options from the ntfy command.
 
 ```bash
 # wrap ping command
-notify-me ntfy wrap -t "<topic>" -- ping -c 1 google.com
+notify-me ntfy wrap -T "<topic>" -- ping -c 1 google.com
 
 # send with a custom message before the command output
-notify-me ntfy wrap -t "<topic>" -m "<message>" -- ping -c 1 google.com
+notify-me ntfy wrap -T "<topic>" -m "<message>" -- ping -c 1 google.com
 
 # send notification to self hosted instance with username and password
-notify-me ntfy wrap -i "<instance>" -u "<user>" -p "<pass>" -t "<topic>" -- ping -c 1 google.com
+notify-me ntfy wrap -i "<instance>" -u "<user>" -p "<pass>" -T "<topic>" -- ping -c 1 google.com
 
 # only send notification when command fails
-notify-me ntfy wrap -t "<topic>" --fail -- ping -c 1 google.com
+notify-me ntfy wrap -T "<topic>" --fail -- ping -c 1 google.com
 
 # only send notification when command succeeds
-notify-me ntfy wrap -t "<topic>" --success -- ping -c 1 google.com
+notify-me ntfy wrap -T "<topic>" --success -- ping -c 1 google.com
 
 # more options
 notify-me ntfy wrap --help
