@@ -61,6 +61,9 @@ notify-me ntfy -t "<topic>" -m "<message>"
 # send notification to self hosted instance with username and password
 notify-me ntfy -i "<instance>" -u "<user>" -p "<pass>" -t "<topic>" -m "<message>"
 
+# send notification with token for authentication
+notify-me ntfy -i "<instance>" --token "<token>" -t "<topic>" -m "<message>"
+
 # add title
 notify-me ntfy -t "<topic>" -m "<message>" -T "title"
 

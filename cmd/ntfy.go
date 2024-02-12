@@ -74,6 +74,7 @@ var ntfyCmd = &cobra.Command{
 			instance,
 			cmd.Flags().Lookup("user").Value.String(),
 			cmd.Flags().Lookup("pass").Value.String(),
+			cmd.Flags().Lookup("token").Value.String(),
 		); err != nil {
 			fmt.Println(err)
 			os.Exit(1)
@@ -157,6 +158,7 @@ var ntfyWrapCmd = &cobra.Command{
 				instance,
 				cmd.Flags().Lookup("user").Value.String(),
 				cmd.Flags().Lookup("pass").Value.String(),
+				cmd.Flags().Lookup("token").Value.String(),
 			); err != nil {
 				fmt.Println(err)
 				os.Exit(1)
@@ -175,6 +177,7 @@ var ntfyWrapCmd = &cobra.Command{
 				instance,
 				cmd.Flags().Lookup("user").Value.String(),
 				cmd.Flags().Lookup("pass").Value.String(),
+				cmd.Flags().Lookup("token").Value.String(),
 			); err != nil {
 				fmt.Println(err)
 				os.Exit(1)
@@ -190,6 +193,8 @@ func ensureNtfyConfigCorrect(cmd *cobra.Command) error {
 		return errors.New("password must be provided if username is provided")
 	} else if !cmd.Flags().Changed("user") && cmd.Flags().Changed("pass") {
 		return errors.New("username must be provided if password is provided")
+	} else if cmd.Flags().Changed("token") && cmd.Flags().Changed("pass") {
+		return errors.New("only one of token or password can be provided")
 	}
 
 	if !cmd.Flags().Changed("topic") {
@@ -226,6 +231,7 @@ func init() {
 	ntfyCmd.PersistentFlags().StringP("instance", "i", "ntfy.sh", "ntfy instance")
 	ntfyCmd.PersistentFlags().StringP("user", "u", "", "Username for the ntfy instance")
 	ntfyCmd.PersistentFlags().StringP("pass", "p", "", "Password for the ntfy instance")
+	ntfyCmd.PersistentFlags().String("token", "", "Access token for the ntfy instance")
 	ntfyCmd.PersistentFlags().StringP("topic", "t", "", "Topic to send the message to")
 	ntfyCmd.PersistentFlags().StringP("message", "m", "", "Message")
 	ntfyCmd.PersistentFlags().StringP("priority", "P", "", "Message Priority (min, low, default, high, max")

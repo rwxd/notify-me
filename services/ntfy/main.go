@@ -30,7 +30,7 @@ type Notification struct {
 	Icon     string
 }
 
-func SendNotification(n *Notification, instance, user, pass string) error {
+func SendNotification(n *Notification, instance, user, pass string, token string) error {
 	msg := strings.NewReader(n.Message)
 	req, err := http.NewRequest("POST", strings.TrimSuffix(instance, "/")+"/"+n.Topic, msg)
 	if err != nil {
@@ -64,6 +64,8 @@ func SendNotification(n *Notification, instance, user, pass string) error {
 
 	if user != "" && pass != "" {
 		req.SetBasicAuth(user, pass)
+	} else if token != "" {
+		req.Header.Set("Authorization", "Bearer "+token)
 	}
 
 	slog.Debug("Sending request to ntfy", "url", req.URL.String(), "headers", req.Header)
