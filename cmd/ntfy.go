@@ -236,7 +236,7 @@ func init() {
 	ntfyCmd.PersistentFlags().StringP("message", "m", "", "Message")
 	ntfyCmd.PersistentFlags().StringP("priority", "P", "", "Message Priority (min, low, default, high, max")
 	ntfyCmd.PersistentFlags().StringSlice("tags", []string{}, "Tags for the message")
-	ntfyCmd.PersistentFlags().StringP("title", "T", "Message title")
+	ntfyCmd.PersistentFlags().StringP("title", "T", "", "Message title")
 	ntfyCmd.PersistentFlags().StringP("url", "U", "", "URL to open when the notification is clicked")
 	ntfyCmd.PersistentFlags().String("actions", "", "JSON array or short format of user actions")
 	ntfyCmd.PersistentFlags().String("delay", "", "Timestamp or duration for delayed delivery")
