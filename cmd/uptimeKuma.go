@@ -188,7 +188,7 @@ func ensureUptimeKumaDefaultCmdConfigCorrect(cmd *cobra.Command) error {
 }
 
 func ensureUptimeKumaWrapCmdConfigCorrect(cmd *cobra.Command, args []string) error {
-	if cmd.Flag("error").Changed && cmd.Flag("success").Changed {
+	if cmd.Flag("fail").Changed && cmd.Flag("success").Changed {
 		return fmt.Errorf("You can't set both error and success")
 	}
 
