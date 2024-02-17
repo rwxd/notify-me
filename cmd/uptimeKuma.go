@@ -91,6 +91,7 @@ var uptimeKumaWrapCmd = &cobra.Command{
 		instance, _ := cmd.Flags().GetString("instance")
 		token, _ := cmd.Flags().GetString("token")
 		message, _ := cmd.Flags().GetString("message")
+		onlyMessage, _ := cmd.Flags().GetBool("only-message")
 		onlyFailure, _ := cmd.Flags().GetBool("error")
 		onlySuccess, _ := cmd.Flags().GetBool("success")
 		reverse, _ := cmd.Flags().GetBool("reverse")
@@ -111,7 +112,8 @@ var uptimeKumaWrapCmd = &cobra.Command{
 		slog.Debug("Running command", "program", program, "args", programArgs)
 		err := command.Run()
 
-		if message != "" {
+		if onlyMessage {
+		} else if message != "" {
 			message += "\n" + output.String()
 		} else {
 			message = output.String()
@@ -189,7 +191,7 @@ func ensureUptimeKumaDefaultCmdConfigCorrect(cmd *cobra.Command) error {
 
 func ensureUptimeKumaWrapCmdConfigCorrect(cmd *cobra.Command, args []string) error {
 	if cmd.Flag("fail").Changed && cmd.Flag("success").Changed {
-		return fmt.Errorf("You can't set both fail and success")
+		return fmt.Errorf("You can't set both error and success")
 	}
 
 	if len(args) == 0 {
@@ -205,7 +207,7 @@ func init() {
 
 	uptimeKumaCmd.PersistentFlags().StringP("instance", "i", "", "The instance to send the notification to")
 	uptimeKumaCmd.PersistentFlags().StringP("token", "t", "", "Token for the push monitor")
-	uptimeKumaCmd.Flags().StringP("message", "m", "", "Message to send to the monitor")
+	uptimeKumaCmd.Flags().StringP("message", "m", "", "Message")
 	uptimeKumaCmd.Flags().StringP("ping", "p", "", "Measurement number to send to the monitor")
 	uptimeKumaCmd.Flags().Bool("down", false, "Set the monitor to down")
 	uptimeKumaCmd.Flags().Bool("up", false, "Set the monitor to up")
@@ -213,5 +215,6 @@ func init() {
 	uptimeKumaWrapCmd.Flags().Bool("fail", false, "Send a notification only if the command fails")
 	uptimeKumaWrapCmd.Flags().Bool("success", false, "Send a notification only if the command succeeds")
 	uptimeKumaWrapCmd.Flags().Bool("reverse", false, "Send a up notification if the command fails and a down notification if the command succeeds")
-	uptimeKumaWrapCmd.Flags().StringP("message", "m", "", "Custom message, defaults to the command output")
+	uptimeKumaWrapCmd.Flags().StringP("message", "m", "", "Message before stdout/stderr")
+	uptimeKumaWrapCmd.Flags().Bool("only-message", false, "Only send the custom message, no stdout/stderr")
 }

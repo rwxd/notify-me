@@ -105,6 +105,7 @@ var ntfyWrapCmd = &cobra.Command{
 		tags, _ := cmd.Flags().GetStringSlice("tags")
 		onlyFailure, _ := cmd.Flags().GetBool("error")
 		onlySuccess, _ := cmd.Flags().GetBool("success")
+		onlyMessage, _ := cmd.Flags().GetBool("only-message")
 
 		if !strings.Contains(instance, "http://") || !strings.Contains(instance, "https://") {
 			instance = "https://" + instance
@@ -133,7 +134,8 @@ var ntfyWrapCmd = &cobra.Command{
 		slog.Debug("Running command", "program", program, "args", programArgs)
 		err := command.Run()
 
-		if notification.Message != "" {
+		if onlyMessage {
+		} else if notification.Message != "" {
 			notification.Message += "\n" + output.String()
 		} else {
 			notification.Message = output.String()
@@ -245,4 +247,6 @@ func init() {
 
 	ntfyWrapCmd.Flags().Bool("fail", false, "Send a notification only if the command fails")
 	ntfyWrapCmd.Flags().Bool("success", false, "Send a notification only if the command succeeds")
+	ntfyWrapCmd.PersistentFlags().StringP("message", "m", "", "Message, before stdout/stderr")
+	ntfyWrapCmd.PersistentFlags().Bool("only-message", false, "Only send the custom message, no stdout/stderr")
 }
