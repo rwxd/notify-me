@@ -12,6 +12,8 @@ Or install it from source:
 go install github.com/rwxd/notify-me@latest
 ```
 
+A [Ansible Role](https://github.com/rwxd/ansible-role-notify_me) is available.
+
 ## Usage
 
 ### Uptime Kuma
