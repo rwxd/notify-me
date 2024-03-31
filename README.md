@@ -6,11 +6,13 @@ Small command line tool to notify myself through various services.
 
 Go to [Releases](https://github.com/rwxd/notify-me/releases) and download the latest release.
 
-Or install it from source:
+### From source
 
 ```bash
 go install github.com/rwxd/notify-me@latest
 ```
+
+### Ansible
 
 A [Ansible Role](https://github.com/rwxd/ansible-role-notify_me) is available.
 
