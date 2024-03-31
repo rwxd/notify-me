@@ -105,3 +105,12 @@ notify-me ntfy wrap -t "<topic>" --success -- ping -c 1 google.com
 # more options
 notify-me ntfy wrap --help
 ```
+
+## Example integrations
+
+### CronJob
+
+```bash
+# run a podman container on cron and report to uptime-kuma if it fails
+0 1 * * * podman notify-me uptime-kuma wrap -i "uptime.kuma.com" -t "abc" -m "" --only-message -- podman run --rm -ti -u root -v "/mnt/data/github-backup/:/github-backup:Z" ghcr.io/rwxd/pulla:1.1 --dest "/github-backup" --worker 1 --token "abc"
+```
