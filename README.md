@@ -75,7 +75,7 @@ notify-me ntfy -t "<topic>" -m "<message>" -T "title"
 notify-me ntfy -t "<topic>" -m "<message>" -p "high"
 
 # add tags
-notify-me ntfy -t "<topic>" -m "<message>" --Tags "tag1,tag2"
+notify-me ntfy -t "<topic>" -m "<message>" --tags "tag1,tag2"
 
 # add url to open when clicking on notification
 notify-me ntfy -t "<topic>" -m "<message>" --url "https://example.com"
@@ -116,5 +116,5 @@ notify-me ntfy wrap --help
 
 ```bash
 # run a podman container on cron and report to uptime-kuma if it fails
-0 1 * * * podman notify-me uptime-kuma wrap -i "uptime.kuma.com" -t "abc" -m "" --only-message -- podman run --rm -ti -u root -v "/mnt/data/github-backup/:/github-backup:Z" ghcr.io/rwxd/pulla:1.1 --dest "/github-backup" --worker 1 --token "abc"
+0 1 * * * podman notify-me uptime-kuma wrap -i "uptime.kuma.com" -t "abc" -m "" --only-message -- podman run --rm -ti docker.io/budsybox sh -c "echo 'hello'"
 ```
