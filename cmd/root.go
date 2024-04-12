@@ -72,7 +72,6 @@ func init() {
 
 	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.notify-me.yaml)")
 	rootCmd.PersistentFlags().BoolVarP(&verboseLogging, "verbose", "v", false, "Verbose output")
-
 }
 
 // initConfig reads in config file and ENV variables if set.

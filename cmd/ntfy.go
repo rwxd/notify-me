@@ -186,7 +186,6 @@ var ntfyWrapCmd = &cobra.Command{
 			}
 			fmt.Println("Notification sent")
 		}
-
 	},
 }
 

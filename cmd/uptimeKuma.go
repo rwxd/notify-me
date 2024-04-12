@@ -67,7 +67,6 @@ var uptimeKumaCmd = &cobra.Command{
 		}
 
 		fmt.Println("Sent status to uptime-kuma")
-
 	},
 }
 
