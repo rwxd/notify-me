@@ -116,5 +116,5 @@ notify-me ntfy wrap --help
 
 ```bash
 # run a podman container on cron and report to uptime-kuma if it fails
-0 1 * * * podman notify-me uptime-kuma wrap -i "uptime.kuma.com" -t "abc" -m "" --only-message -- podman run --rm -ti docker.io/budsybox sh -c "echo 'hello'"
+0 1 * * * podman notify-me uptime-kuma wrap -i "uptime.kuma.com" -t "abc" -m "" --only-message -- podman run --rm -ti docker.io/busybox sh -c "echo 'hello'"
 ```
