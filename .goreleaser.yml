@@ -1,4 +1,5 @@
 ---
+version: 2
 project_name: notify-me
 
 before:
@@ -11,9 +12,6 @@ builds:
     mod_timestamp: "{{ .CommitTimestamp }}"
     flags:
       - -trimpath
-    # ldflags:
-    #   - -s
-    #   - -w
     goarch:
       - amd64
       - arm64
@@ -21,12 +19,6 @@ builds:
       - linux
       - darwin
       - windows
-# signs:
-#   - artifacts: checksum
-#     args:
-#       [
-#         "--batch",
-#       ]
 archives:
   - format: binary
     name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
@@ -36,7 +28,7 @@ checksum:
 release:
   draft: false
 changelog:
-  skip: true
+  disable: true
 snapshot:
   name_template: "{{ .Tag }}-next"
 nfpms:
