@@ -6,6 +6,7 @@ before:
   hooks:
     - go mod tidy
     - go generate ./...
+
 builds:
   - env:
       - CGO_ENABLED=0
@@ -18,10 +19,6 @@ builds:
     goos:
       - linux
       - darwin
-      - windows
-archives:
-  - format: binary
-    name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
 checksum:
   name_template: "{{ .ProjectName }}_{{ .Version }}_SHA256SUMS"
   algorithm: sha256
@@ -29,23 +26,10 @@ release:
   draft: false
 changelog:
   disable: true
-snapshot:
-  name_template: "{{ .Tag }}-next"
 nfpms:
   - package_name: "notify-me"
     maintainer: rwxd <git@rwxd.de>
-    description: "Small command line tool to notify myself through various services."
+    description: "Small command line tool to notify myself through various services"
     formats:
       - deb
       - rpm
-upx:
-  - enabled: true
-    # Valid options are from '1' (faster) to '9' (better), and 'best'.
-    compress: best
-    # Whether to try LZMA (slower).
-    lzma: true
-    # Whether to try all methods and filters (slow).
-    brute: false
-    goos:
-      - linux
-      - windows
