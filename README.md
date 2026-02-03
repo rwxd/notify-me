@@ -14,29 +14,8 @@ go install github.com/rwxd/notify-me@latest
 
 ### NixOS / Nix
 
-Add to your `flake.nix`:
+Refer to https://github.com/rwxd/my-nixpkgs for the nix package.
 
-```nix
-{
-  inputs.notify-me.url = "github:rwxd/notify-me";
-  # Or use a specific version:
-  # inputs.notify-me.url = "github:rwxd/notify-me/v1.0.0";
-}
-```
-
-Then use in your configuration:
-
-```nix
-environment.systemPackages = [ inputs.notify-me.packages.${system}.notify-me ];
-```
-
-Or run directly:
-
-```bash
-nix run github:rwxd/notify-me -- ntfy -t "<topic>" -m "<message>"
-# Or use a specific version:
-# nix run github:rwxd/notify-me/v1.0.0 -- ntfy -t "<topic>" -m "<message>"
-```
 
 ### Ansible
 
